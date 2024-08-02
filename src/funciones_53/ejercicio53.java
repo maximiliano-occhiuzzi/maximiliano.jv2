@@ -10,20 +10,26 @@ public class ejercicio53 {
 	static int sum;
 
 	public static int IngresoCalificaciones() {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("ingrese 5 calificaciones: ");
 
-		System.out.println("ingrese 5 calificaciones: ");
-		
-		notas = dato.nextInt();
+			notas = dato.nextInt();
+			break;
+		}
 		return notas;
+
 	}
 
 	public static int MaxMin(int nota) {
-		if (nota > max) {
-			max = nota;
+		for (int i = 0; i < 5; i++) {
+			if (nota > max) {
+				max = nota;
+			}
+			if (nota < min) {
+				min = nota;
+			}
 		}
-		if (nota < min) {
-			min = nota;
-		}
+
 		return nota;
 	}
 
@@ -37,15 +43,14 @@ public class ejercicio53 {
 	public static void promedio(float promedio) {
 		float prom = sum / 5;
 		System.out.println("el promedio del alumno es de: " + prom);
-	
+
 	}
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 5; i++) {
 			resultadoMaxMin(MaxMin((IngresoCalificaciones())));
 		}
-		
-		
+
 		promedio(resultadoMaxMin(MaxMin((IngresoCalificaciones()))));
 	}
 }

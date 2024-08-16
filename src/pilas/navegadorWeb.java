@@ -7,75 +7,75 @@ import java.util.Stack;
 
 public class navegadorWeb {
 	public static void main(String[] args) {
-		  Scanner dato = new Scanner(System.in);
-	        List<String> historial = new ArrayList<>();
-	        Stack<String> adelante = new Stack<>();
-	        Stack<String> atras = new Stack<>();
-	        int opcion;
-	        String url = null;
-	        
-	        System.out.println("BIENVENIDO/A A GOOGLE");
+		Scanner dato = new Scanner(System.in);
+		List<String> historial = new ArrayList<>();
+		Stack<String> adelante = new Stack<>();
+		Stack<String> atras = new Stack<>();
+		int opcion;
+		String url = null;
 
-	        do {
-	            System.out.println("1. ¿Desea visitar una página nueva?");
-	            System.out.println("2. Volver atrás");
-	            System.out.println("3. Avanzar");
-	            System.out.println("4. Mostrar historial");
-	            System.out.println("5. Salir");
-	            opcion = dato.nextInt();
-	            dato.nextLine();  // Consumir el salto de línea pendiente
+		System.out.println("BIENVENIDO/A A GOOGLE");
 
-	            switch (opcion) {
-	                case 1:
-	                    System.out.println("Por favor ingrese una URL: ");
-	                    url = dato.nextLine();
-	                    historial.add(url);
-	                    adelante.clear(); // Limpiar el historial de avance al visitar una nueva página
-	                    atras.push(url);
-	                    System.out.println("Nueva página: " + url);
-	                    break;
-	                case 2:
-	                    if (!atras.isEmpty()) {
-	                        adelante.push(atras.pop());
-	                        if (!atras.isEmpty()) {
-	                            url = atras.peek();
-	                            System.out.println("Página actual: " + url);
-	                        } else {
-	                            System.out.println("No hay páginas a las que volver.");
-	                        }
-	                    } else {
-	                        System.out.println("No hay páginas en el historial.");
-	                    }
-	                    break;
-	                case 3:
-	                    if (!adelante.isEmpty()) {
-	                        url = adelante.pop();
-	                        atras.push(url);
-	                        System.out.println("Página actual: " + url);
-	                    } else {
-	                        System.out.println("No hay páginas para avanzar.");
-	                    }
-	                    break;
-	                case 4:
-	                    System.out.println("Historial de páginas visitadas:");
-	                    for (String pagina : historial) {
-	                        System.out.println(pagina);
-	                    }
-	                    break;
-	                case 5:
-	                    System.out.println("Saliendo...");
-	                    break;
-	                default:
-	                    System.out.println("Opción no válida.");
-	                    break;
-	            }
-	        } while (opcion != 5);
+		do {
+			System.out.println("1. ¿Desea visitar una página nueva?");
+			System.out.println("2. Volver atrás");
+			System.out.println("3. Avanzar");
+			System.out.println("4. Mostrar historial");
+			System.out.println("5. Salir");
+			opcion = dato.nextInt();
+			dato.nextLine(); // Consumir el salto de línea pendiente
 
-	        System.out.println(" ");
-	        System.out.println("------------------------------");
-	        System.out.println("FIN DEL PROGRAMA");
-	    }
+			switch (opcion) {
+			case 1:
+				System.out.println("Por favor ingrese una URL: ");
+				url = dato.nextLine();
+				historial.add(url);
+				adelante.clear(); // Limpiar el historial de avance al visitar una nueva página
+				atras.push(url);
+				System.out.println("Nueva página: " + url);
+				break;
+			case 2:
+				if (!atras.isEmpty()) {
+					adelante.push(atras.pop());
+					if (!atras.isEmpty()) {
+						url = atras.peek();
+						System.out.println("Página actual: " + url);
+					} else {
+						System.out.println("No hay páginas a las que volver.");
+					}
+				} else {
+					System.out.println("No hay páginas en el historial.");
+				}
+				break;
+			case 3:
+				if (!adelante.isEmpty()) {
+					url = adelante.pop();
+					atras.push(url);
+					System.out.println("Página actual: " + url);
+				} else {
+					System.out.println("No hay páginas para avanzar.");
+				}
+				break;
+			case 4:
+				System.out.println("Historial de páginas visitadas:");
+				for (String pagina : historial) {
+					System.out.println(pagina);
+				}
+				break;
+			case 5:
+				System.out.println("Saliendo...");
+				break;
+			default:
+				System.out.println("Opción no válida.");
+				break;
+			}
+		} while (opcion != 5);
+
+		System.out.println(" ");
+		System.out.println("------------------------------");
+		System.out.println("FIN DEL PROGRAMA");
 	}
+}
 /*
  * El manejo del historial y la navegación hacia atrás y hacia adelante:
  * 

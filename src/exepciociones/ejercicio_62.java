@@ -1,17 +1,32 @@
-package funciones_55;
+package exepciociones;
 
 import java.util.Scanner;
 
-public class ejercicio56 {
+public class ejercicio_62 {
 	static Scanner dato = new Scanner(System.in);
 	static int[] dni = new int[5];
+	static boolean flag;
 
 	public static void ingresodeDatos() {
 		for (int i = 0; i < dni.length; i++) {
-			System.out.println("ingrese un conjunto de numeros dni: ");
-			dni[i] = dato.nextInt();
+			flag = false;
+			while (!flag) {
+				try {
+					System.out.println("ingrese un conjunto de numeros dni: ");
+					dni[i] = dato.nextInt();
+					if (dni[i] <= 0) {
+						System.out.println("no podes ingresar DNIs menores o iguales a 0");
+						throw new ArithmeticException();
+					}
+					flag = true;
+				} catch (Exception e) {
+					System.out.println("Error: " + e.getMessage());
+					System.out.println("Valor incorrecto. Intente de nuevo.");
+					dato.next(); // Clear invalid input
+				}
+				
+			}
 		}
-
 	}
 
 	public static void ordenamiento() {
